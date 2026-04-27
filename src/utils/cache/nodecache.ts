@@ -19,7 +19,3 @@ export const nodeDelete = (key: string): number => {
   return cache.del(key);
 };
 
-
-// key: اسم المفتاح اللي هتخزن تحته القيمة.
-
-// value: القيمة اللي عاوز تخزنها.

@@ -26,11 +26,10 @@ const logger = createLogger({
 
 export default logger;
 
-// import logger from "../utils/logger";
 
-// استخدامات ممكنة:
+
+// الاستخدام:
 // logger.info("User logged in: " + user.id);
 // logger.error("Failed to connect to DB");
 // logger.warn("Disk space is low");
 
-// سجل بقا الحاجات دي ف جزء من مشروعك

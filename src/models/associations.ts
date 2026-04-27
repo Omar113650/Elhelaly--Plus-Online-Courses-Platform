@@ -6,7 +6,7 @@ import Enrollment from "./Enrollment";
 import Comment from "./Comment";
 import PerformanceEvaluation from "./Evaluation";
 
-// (1:N)
+
 User.hasMany(Course, {
   foreignKey: "teacherId",
   as: "courses",
@@ -16,7 +16,7 @@ Course.belongsTo(User, {
   as: "teacher",
 });
 
-// (N:1)
+
 Category.hasMany(Course, {
   foreignKey: "categoryId",
   as: "courses",
@@ -26,7 +26,7 @@ Course.belongsTo(Category, {
   as: "category",
 });
 
-// (Many-to-Many)
+
 User.hasMany(Enrollment, {
   foreignKey: "userId",
   as: "enrollments",
@@ -45,7 +45,7 @@ Enrollment.belongsTo(Course, {
   as: "course",
 });
 
-// (1:N)
+
 Course.hasMany(Lesson, {
   foreignKey: "courseId",
   as: "lessons",
@@ -55,7 +55,7 @@ Lesson.belongsTo(Course, {
   as: "course",
 });
 
-// (1:N)
+
 Lesson.hasMany(Comment, {
   foreignKey: "lessonId",
   as: "comments",

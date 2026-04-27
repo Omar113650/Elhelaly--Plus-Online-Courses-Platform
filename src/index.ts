@@ -69,11 +69,11 @@ if (process.env.NODE_ENV === "development") {
     })
   );
 }
-// ************************************************************ deal with customer is request me this project
+
 app.get("/api/isAppBlocked", (req, res) => {
-  res.json({ isBlocked: true }); // false الحالة
+  res.json({ isBlocked: true }); 
 });
-// /************************************************************************************************************* */
+// ************************************************************************************************************* 
 app.use(express.json());
 
 import userRoutes from "./routes/user.routes";
