@@ -1,229 +1,109 @@
 # E-Learning Platform
 
-**Complete Online Learning Platform with Multi-Role Management**
+**Complete Online Learning Platform with Courses, Enrollments, Payments, AI Integration, and Multi-Role Management**
 
-A complete E-Learning backend platform built with NestJS and TypeScript for managing courses, instructors, students, appointments, assessments, reports, file uploads, and real-time notifications.
+A complete E-Learning backend platform built with Node.js, Express.js, TypeScript, and MongoDB.
 
-The platform supports multiple user roles with fine-grained access control while providing secure authentication, email verification, automated reporting, and scalable data export capabilities.
+The platform provides a complete infrastructure for managing users, courses, lessons, enrollments, evaluations, payments, comments, categories, and administrative operations.
+
+It also integrates external services such as AI capabilities, online payments, cloud-based file storage, and email services.
 
 ---
 
 ## Table of Contents
 
 1. Project Overview
-2. Problem Statement
-3. Solution Overview
-4. User Roles
-5. Core Features
-6. Tech Stack
-7. System Architecture
-8. Authentication and Authorization
-9. Role-Based Access Control
-10. Course Management
-11. Enrollment Management
-12. Appointments and Scheduling
-13. Test and Lab Results
-14. File Management
-15. Real-Time Notifications
-16. Email Notifications
-17. Reporting and Data Export
-18. Idempotency
-19. Error Handling
-20. Engineering Challenges
-21. Project Structure
-22. Environment Configuration
-23. Installation and Setup
-24. Scalability
-25. Future Enhancements
-26. Use Cases
-27. Author
+2. Core Features
+3. Tech Stack
+4. System Architecture
+5. Authentication and Authorization
+6. Course Management
+7. Lesson Management
+8. Categories
+9. Enrollment System
+10. Evaluation System
+11. Comments
+12. Payments
+13. AI Integration
+14. File Uploads
+15. Email Services
+16. Admin Dashboard
+17. Validation and Error Handling
+18. Project Structure
+19. Environment Configuration
+20. Installation and Setup
+21. Engineering Highlights
+22. Future Enhancements
+23. Author
 
 ---
 
 # Project Overview
 
-The E-Learning Platform is designed to provide a centralized backend system for managing online education.
+The E-Learning Platform is a backend system designed to manage the complete online learning lifecycle.
 
-The platform connects three primary types of users:
+The platform allows users to discover courses, access lessons, enroll in courses, submit evaluations, interact through comments, and complete payments.
 
-- Administrators
-- Instructors
-- Students
+Administrators can manage the platform through dedicated administrative functionality and dashboard endpoints.
 
-Administrators manage the overall platform, instructors manage courses and educational activities, and students interact with courses, appointments, results, and notifications.
+The backend also integrates AI functionality, cloud-based file management, payment processing, and email services.
 
-The backend handles the complete educational workflow:
+A simplified platform flow:
 
-```text id="v7d42a"
-Student Registration
-        |
-        v
-Email Verification
-        |
-        v
+```text
+User
+ |
+ v
 Authentication
-        |
-        v
-Course Enrollment
-        |
-        v
-Course Activities
-        |
-        v
-Appointments
-        |
-        v
-Tests / Labs
-        |
-        v
-Results
-        |
-        v
-Reports
+ |
+ v
+Browse Courses
+ |
+ v
+View Course
+ |
+ v
+Enroll
+ |
+ v
+Payment
+ |
+ v
+Access Lessons
+ |
+ v
+Evaluate Course
+ |
+ v
+Interact through Comments
 ```
-
----
-
-# Problem Statement
-
-Building an E-Learning platform requires more than storing courses and users.
-
-The system must handle several complex requirements:
-
-- Different user roles and permissions
-- Secure authentication
-- Email verification
-- Course management
-- Student enrollment
-- Instructor management
-- Appointment scheduling
-- File uploads
-- Test and lab results
-- Real-time notifications
-- Email communication
-- Report generation
-- Large data exports
-- Duplicate request prevention
-
-The backend must keep these operations secure, organized, and scalable.
-
----
-
-# Solution Overview
-
-The platform provides a modular backend architecture built with NestJS.
-
-The system includes:
-
-- JWT Authentication
-- Email Verification
-- Role-Based Access Control
-- Course Management
-- Enrollment Management
-- Appointment Scheduling
-- Test and Lab Results
-- File Upload Management
-- Real-Time Notifications
-- Email Notifications
-- Automated Reporting
-- CSV Export
-- Excel Export
-- Idempotent Request Handling
-
-The modular architecture keeps each business domain separated and makes the application easier to maintain and extend.
-
----
-
-# User Roles
-
-The platform supports three primary roles.
-
-## Admin
-
-Administrators manage the overall system.
-
-Responsibilities may include:
-
-- Managing users
-- Managing instructors
-- Managing students
-- Managing courses
-- Monitoring enrollments
-- Managing appointments
-- Accessing reports
-- Exporting platform data
-- Monitoring platform activity
-
----
-
-## Instructor
-
-Instructors manage educational content and student activities.
-
-They can:
-
-- Create courses
-- Update courses
-- Publish courses
-- Manage course content
-- View enrolled students
-- Schedule appointments
-- Upload documents
-- Manage student results
-- Generate reports
-- Receive notifications
-
----
-
-## Student
-
-Students interact with educational services.
-
-They can:
-
-- Browse available courses
-- Enroll in courses
-- View enrolled courses
-- View appointments
-- Upload required files
-- View test results
-- View lab results
-- Receive notifications
-- Receive email alerts
 
 ---
 
 # Core Features
 
-## Admin Dashboard
+The platform includes:
 
-The Admin Dashboard provides administrative control over the platform.
-
-It can display information such as:
-
-- Total users
-- Total instructors
-- Total students
-- Total courses
-- Enrollment statistics
-- Appointment statistics
-- Recent activity
-- Reports
-
----
-
-## Instructor Dashboard
-
-The Instructor Dashboard provides instructors with access to their educational activities.
-
-Possible information includes:
-
-- Assigned courses
-- Enrolled students
-- Upcoming appointments
-- Student results
-- Recent submissions
-- Notifications
+- User Authentication
+- Email Verification
+- Password Reset
+- User Management
+- Course Management
+- Lesson Management
+- Category Management
+- Course Enrollment
+- Course Evaluations
+- Course Comments
+- Payment Processing
+- Payment Session Creation
+- AI Integration
+- File Upload Management
+- Cloudinary Integration
+- Email Services
+- Admin Dashboard
+- Request Validation
+- Centralized Error Handling
+- Application Logging
 
 ---
 
@@ -232,340 +112,450 @@ Possible information includes:
 | Layer | Technology |
 |---|---|
 | Runtime | Node.js |
-| Backend Framework | NestJS |
+| Backend Framework | Express.js |
 | Language | TypeScript |
-| Database | PostgreSQL |
-| ORM | Prisma |
-| Authentication | JWT |
-| Authorization | RBAC |
-| Real-Time Communication | Socket.IO |
+| Database | MongoDB |
+| ODM | Mongoose |
+| Authentication | JWT-based Authentication |
 | File Upload | Multer |
 | Cloud Storage | Cloudinary |
-| CSV Export | fast-csv |
-| Excel Export | ExcelJS |
-| Email | Nodemailer |
-| Architecture | Modular NestJS Architecture |
+| Payments | Paymob |
+| AI Integration | Google Gemini |
+| Email | Email Service |
+| Validation | Custom Validation Middleware |
+| Logging | Application Logger |
+| Architecture | Controller / Model / Route / Service Architecture |
 
 ---
 
 # System Architecture
 
-The high-level architecture follows:
+The backend follows a modular Express architecture.
 
-```text id="7zlm1k"
-                      Client Applications
-                              |
-                              v
-                         NestJS API
-                              |
-          -------------------------------------------
-          |                  |                      |
-          v                  v                      v
-    Authentication       Validation             RBAC
-          |
-          v
-       Controllers
-          |
-          v
-        Services
-          |
-          v
-     Business Logic
-          |
-     -------------------------------
-     |              |              |
-     v              v              v
- PostgreSQL     Socket.IO      External Services
-     |                              |
-     v                       ------------------
-   Prisma                      |              |
-                               v              v
-                           Cloudinary     Nodemailer
+```text
+                     Client Application
+                            |
+                            v
+                       Express API
+                            |
+              ---------------------------
+              |            |            |
+              v            v            v
+        Middleware     Validation    Authentication
+              |
+              v
+            Routes
+              |
+              v
+         Controllers
+              |
+              v
+        Business Logic
+              |
+       -------------------
+       |        |        |
+       v        v        v
+    MongoDB   Services   External APIs
+       |        |            |
+       v        |      -----------------
+    Mongoose    |      |       |       |
+                v      v       v       v
+             Email   Paymob Gemini Cloudinary
 ```
 
-NestJS modules separate the different business domains while dependency injection keeps components loosely coupled.
+This architecture separates HTTP routing, request validation, business logic, database models, and external service integrations.
 
 ---
 
 # Authentication and Authorization
 
-The platform uses JWT-based authentication.
+Authentication logic is handled through:
 
-A typical authentication flow:
-
-```text id="1l0d1g"
-User Registration
-       |
-       v
-Hash Password
-       |
-       v
-Create Account
-       |
-       v
-Send Verification Email
-       |
-       v
-Verify Email
-       |
-       v
-User Login
-       |
-       v
-Validate Credentials
-       |
-       v
-Generate JWT
-       |
-       v
-Access Protected Resources
+```text
+AuthController.ts
+authMiddleware.ts
+Auth.routes.ts
 ```
 
-Authentication answers:
+The authentication layer is responsible for protecting private resources and identifying authenticated users.
 
-```text id="4cpifk"
-Who is the user?
+The project also contains dedicated models for account verification and password recovery:
+
+```text
+VerificationCode.ts
+PasswordResetToken.ts
 ```
 
-Authorization answers:
+A typical authentication workflow:
 
-```text id="o1fdvr"
-What is the user allowed to do?
-```
-
----
-
-# Email Verification
-
-New accounts can be required to verify their email addresses before receiving full access.
-
-Example workflow:
-
-```text id="ur9zqp"
+```text
 Register
    |
    v
 Create User
    |
    v
-Generate Verification Token / Code
+Verification Code
    |
    v
-Send Verification Email
+Verify Account
    |
    v
-User Verifies Email
+Login
    |
    v
-Activate Account
+Generate Authentication Token
+   |
+   v
+Access Protected Resources
 ```
-
-This helps ensure that accounts are associated with valid email addresses.
 
 ---
 
-# Role-Based Access Control
+# User Management
 
-RBAC controls access to platform resources.
+User operations are handled through:
 
-Roles include:
-
-```text id="87g9cm"
-ADMIN
-INSTRUCTOR
-STUDENT
+```text
+UserController.ts
+User.ts
+user.routes.ts
 ```
 
-Example permissions:
+The user module is responsible for user-related operations and account management.
 
-```text id="fq2edh"
-POST /courses
-ADMIN / INSTRUCTOR
+User information also connects with other platform resources such as:
 
-PUT /courses/:id
-ADMIN / INSTRUCTOR
-
-GET /admin/reports
-ADMIN
-
-POST /enrollments
-STUDENT
-
-GET /results/me
-STUDENT
-```
-
-Authorization should be enforced by the backend rather than relying on frontend visibility.
+- Enrollments
+- Evaluations
+- Comments
+- Payments
+- Courses
 
 ---
 
 # Course Management
 
-The platform provides complete course management functionality.
+Courses represent the main educational resource in the platform.
 
-Supported operations include:
+Course functionality is implemented through:
+
+```text
+CourseController.ts
+Course.ts
+course.route.ts
+```
+
+The course system can support operations such as:
 
 - Create courses
+- Retrieve courses
 - Update courses
 - Delete courses
-- Publish courses
-- Retrieve courses
-- Assign instructors
-- View enrolled students
-- Manage course information
-
-A course lifecycle may follow:
-
-```text id="6gb9y9"
-DRAFT
-  |
-  v
-REVIEW
-  |
-  v
-PUBLISHED
-  |
-  v
-ARCHIVED
-```
-
-Explicit course states help prevent incomplete courses from becoming publicly available.
+- Organize courses by category
+- Connect lessons to courses
+- Manage course enrollment
+- Manage course evaluations
+- Manage course comments
 
 ---
 
-# Enrollment Management
+# Lesson Management
 
-Students can enroll in available courses.
+Lessons are managed separately from courses.
 
-A typical enrollment flow:
+The project contains:
 
-```text id="i1n0if"
-Student
+```text
+LessonController.ts
+Lesson.ts
+Lesson.routes.ts
+```
+
+A course can contain multiple lessons.
+
+Conceptually:
+
+```text
+Course
+  |
+  +---- Lesson 1
+  |
+  +---- Lesson 2
+  |
+  +---- Lesson 3
+  |
+  +---- Lesson N
+```
+
+Separating lessons from courses keeps the content architecture flexible and easier to maintain.
+
+---
+
+# Category Management
+
+Courses can be organized into categories.
+
+Category functionality is implemented through:
+
+```text
+CategoryController.ts
+Category.ts
+category.routes.ts
+```
+
+Conceptually:
+
+```text
+Category
    |
-   v
+   +---- Course
+   |
+   +---- Course
+   |
+   +---- Course
+```
+
+Categories make course discovery and organization easier.
+
+---
+
+# Enrollment System
+
+The platform contains a dedicated enrollment module.
+
+Implementation:
+
+```text
+EnrollmentController.ts
+Enrollment.ts
+Enrollment.routes.ts
+```
+
+The enrollment system connects users with courses.
+
+A typical workflow:
+
+```text
+User
+ |
+ v
 Select Course
-   |
-   v
+ |
+ v
 Validate Course
-   |
-   v
-Check Enrollment
-   |
-   v
+ |
+ v
+Check Existing Enrollment
+ |
+ v
+Process Required Payment
+ |
+ v
 Create Enrollment
-   |
-   v
-Notify Instructor
-   |
-   v
-Notify Student
+ |
+ v
+Grant Course Access
 ```
 
-The system should prevent duplicate enrollment for the same student and course.
+Enrollment is an important business entity because it represents the relationship between a learner and a course.
 
 ---
 
-# Appointments and Scheduling
+# Evaluation System
 
-The platform supports scheduling between students and instructors.
+Students can evaluate courses through a dedicated evaluation system.
 
-Appointments can be used for:
+Implementation:
 
-- Mentoring sessions
-- Course meetings
-- Lab sessions
-- Assessments
-- Student support
-- Instructor meetings
-
-Example workflow:
-
-```text id="32xd7q"
-Student / Instructor
-        |
-        v
-Select Date and Time
-        |
-        v
-Check Availability
-        |
-        v
-Create Appointment
-        |
-        v
-Store Appointment
-        |
-        v
-Send Notification
-        |
-        v
-Send Email Alert
+```text
+EvaluationController.ts
+Evaluation.ts
+EvaluationRoutes.ts
 ```
 
-Appointment validation can prevent scheduling conflicts.
+Evaluations can be associated with:
+
+```text
+User
+  |
+  v
+Course
+  |
+  v
+Evaluation
+```
+
+This allows the platform to collect feedback about educational content.
 
 ---
 
-# Test and Lab Results
+# Comment System
 
-The platform supports managing educational results.
+The platform includes course-related commenting functionality.
 
-Instructors can:
+Implementation:
 
-- Add test results
-- Add lab results
-- Update results
-- Upload result documents
-- Generate reports
-
-Students can:
-
-- View their results
-- Receive result notifications
-- Download related documents where applicable
-
-Example:
-
-```text id="8rgif1"
-Instructor
-    |
-    v
-Submit Result
-    |
-    v
-Validate Student
-    |
-    v
-Validate Course
-    |
-    v
-Store Result
-    |
-    v
-Generate Notification
-    |
-    v
-Notify Student
+```text
+CommentController.ts
+Comment.ts
+commentRoutes.ts
 ```
+
+Comments allow users to interact with course content and provide feedback or discussion.
 
 ---
 
-# File Management
+# Payments
 
-The platform supports document and result file uploads.
+The platform includes payment functionality.
 
-Multer handles multipart file uploads while Cloudinary can provide cloud-based file storage.
+Payment-related files include:
 
-Typical flow:
+```text
+PaymentController.ts
+Payment.model.ts
+PaymentRoutes.ts
+createPaymentSessionController.ts
+paymobService.ts
+```
 
-```text id="t31quy"
+The architecture separates payment business logic from the external payment provider integration.
+
+A typical payment flow:
+
+```text
+User
+ |
+ v
+Select Course
+ |
+ v
+Create Payment Session
+ |
+ v
+Paymob Service
+ |
+ v
+Payment Gateway
+ |
+ v
+Payment Result
+ |
+ v
+Store Payment
+ |
+ v
+Complete Enrollment
+```
+
+This separation makes the payment integration easier to maintain.
+
+---
+
+# Paymob Integration
+
+The project contains:
+
+```text
+paymobService.ts
+```
+
+This service acts as an integration layer between the application and Paymob.
+
+Conceptually:
+
+```text
+Application
+    |
+    v
+Payment Controller
+    |
+    v
+Paymob Service
+    |
+    v
+Paymob API
+```
+
+Keeping payment provider logic inside a dedicated service reduces coupling between controllers and external APIs.
+
+---
+
+# AI Integration
+
+The project contains dedicated AI functionality.
+
+AI-related files include:
+
+```text
+aiController.ts
+ai.ts
+aiHelper.ts
+gemini.ts
+```
+
+The architecture separates AI routing, controller logic, helper functionality, and the AI provider integration.
+
+Conceptually:
+
+```text
+Client
+  |
+  v
+AI Route
+  |
+  v
+AI Controller
+  |
+  v
+AI Helper
+  |
+  v
+Gemini Integration
+  |
+  v
+AI Response
+```
+
+This makes AI functionality independent from the core educational modules.
+
+---
+
+# Gemini Integration
+
+The project includes:
+
+```text
+gemini.ts
+```
+
+This indicates a dedicated integration layer for Google Gemini.
+
+The AI functionality can be used to extend the learning experience without coupling the entire application directly to the AI provider.
+
+---
+
+# File Upload Management
+
+The platform contains dedicated file upload middleware:
+
+```text
+multer.ts
+```
+
+Multer handles multipart/form-data uploads before files are processed or uploaded to external storage.
+
+A typical flow:
+
+```text
 Client
   |
   v
 Upload File
   |
   v
-Multer
+Multer Middleware
   |
   v
 Validate File
@@ -574,468 +564,407 @@ Validate File
 Cloudinary
   |
   v
-Store File URL
-  |
-  v
-PostgreSQL
+Store File Reference
 ```
-
-File validation can include:
-
-- File type validation
-- File size validation
-- Authentication checks
-- Authorization checks
 
 ---
 
-# Real-Time Notifications
+# Cloudinary Integration
 
-Socket.IO is used to deliver real-time updates.
+Cloud-based file storage is handled through:
 
-Notification events may include:
-
-- New course enrollment
-- Appointment created
-- Appointment updated
-- Appointment cancelled
-- New result available
-- Course published
-- New report available
-
-Architecture:
-
-```text id="0wrvfk"
-Business Event
-     |
-     v
-Application Service
-     |
-     v
-Notification Service
-     |
-     v
-Socket.IO Gateway
-     |
-     v
-Connected User
+```text
+Cloudinary.ts
 ```
 
-This reduces the need for clients to continuously poll the API.
+Cloudinary can be used for storing resources such as:
+
+- Course images
+- User images
+- Educational assets
+- Uploaded media
+
+This prevents the backend server from depending entirely on local file storage.
 
 ---
 
-# Email Notifications
+# Email Services
 
-Nodemailer is used for email communication.
+The project contains:
 
-Emails may be sent for:
+```text
+emailServices.ts
+```
+
+The email layer can support workflows such as:
 
 - Email verification
-- Enrollment confirmation
-- Appointment confirmation
-- Appointment reminders
-- Result notifications
-- Account-related notifications
+- Password reset
+- Account notifications
+- Enrollment-related emails
+- Payment-related notifications
 
-Example:
+Conceptually:
 
-```text id="rvx60z"
+```text
 Application Event
        |
        v
 Email Service
        |
        v
-Nodemailer
+Email Provider
        |
        v
-SMTP Provider
-       |
-       v
-User Email
+User Inbox
 ```
 
 ---
 
-# Reporting
+# Admin Dashboard
 
-The platform supports automated report generation.
+Administrative dashboard functionality is handled through:
 
-Reports can contain information such as:
-
-- Student enrollments
-- Course statistics
-- Test results
-- Lab results
-- Instructor activity
-- Appointment statistics
-
-Reports can be filtered before being generated.
-
-Example:
-
-```text id="y02z0h"
-Admin / Instructor
-        |
-        v
-Select Filters
-        |
-        v
-Retrieve Data
-        |
-        v
-Generate Report
-        |
-        v
-Export Data
+```text
+adminDashboardController.ts
+AdminRoutes.ts
 ```
+
+The Admin Dashboard can provide centralized access to platform management and statistics.
+
+Administrative operations may include:
+
+- User management
+- Course management
+- Enrollment monitoring
+- Payment monitoring
+- Platform statistics
+- Content management
 
 ---
 
-# CSV Export
+# Validation
 
-The platform uses `fast-csv` for CSV generation.
+The project includes dedicated validation functionality.
 
-CSV exports can be useful for:
+Relevant files include:
 
-- Enrollment records
-- Student information
-- Course data
-- Results
-- Administrative reports
+```text
+validate.ts
+ValidateID.ts
+validation/
+```
 
-For larger datasets, streaming can be used to reduce memory consumption.
+Validation middleware ensures that invalid requests are rejected before reaching core business logic.
 
-Conceptually:
+A typical request flow:
 
-```text id="hl1ktq"
-Database
+```text
+Request
    |
    v
-Read Data
+Validate ID
    |
    v
-CSV Stream
+Validate Body
    |
    v
-HTTP Response
+Authentication
+   |
+   v
+Controller
 ```
 
-This approach can be more memory-efficient than loading the entire export into memory.
-
----
-
-# Excel Export
-
-ExcelJS is used for generating Excel reports.
-
-The platform can generate structured spreadsheets containing:
-
-- Column headers
-- Student information
-- Course information
-- Results
-- Enrollment data
-- Report statistics
-
-This allows administrators and instructors to work with exported data outside the platform.
-
----
-
-# Idempotent Request Handling
-
-Some operations must not be executed more than once accidentally.
-
-For example:
-
-```text id="ogjdmq"
-Student clicks "Enroll"
-        |
-        v
-Network is slow
-        |
-        v
-Student clicks again
-```
-
-Without protection, the backend could create duplicate enrollments.
-
-Idempotent handling ensures that repeated requests representing the same operation do not create duplicate side effects.
-
-This concept is particularly useful for:
-
-- Enrollment creation
-- Appointment creation
-- File processing
-- Notification generation
-- Report generation
+This keeps controllers focused on application logic rather than repeated validation code.
 
 ---
 
 # Error Handling
 
-The platform uses centralized error handling to provide consistent API responses.
+The project includes centralized error handling through:
 
-Typical HTTP errors include:
+```text
+Error.ts
+```
 
-```text id="75bf6u"
+Centralized error handling helps provide consistent API responses.
+
+Common HTTP errors may include:
+
+```text
 400 Bad Request
 401 Unauthorized
 403 Forbidden
 404 Not Found
 409 Conflict
-429 Too Many Requests
 500 Internal Server Error
 ```
 
-NestJS exception filters can be used to centralize error handling across the application.
+---
+
+# Logging
+
+The project contains:
+
+```text
+logger.ts
+```
+
+Centralized logging can be used to track:
+
+- Application activity
+- API errors
+- Authentication issues
+- Payment operations
+- External service failures
+- Unexpected application behavior
+
+Logging is important for debugging and production monitoring.
 
 ---
 
-# Engineering Challenges
+# Database Models
 
-The project addresses several backend engineering challenges beyond standard CRUD operations.
+The project contains the following main models:
 
-## Fine-Grained Authorization
+```text
+Category.ts
+Comment.ts
+Course.ts
+Enrollment.ts
+Evaluation.ts
+Lesson.ts
+PasswordResetToken.ts
+Payment.model.ts
+User.ts
+VerificationCode.ts
+```
 
-Different roles require different permissions across courses, results, appointments, and reports.
+The relationships between these models are configured through:
 
-## Email Verification
+```text
+associations.ts
+```
 
-Account activation requires a secure verification workflow.
+A simplified domain model:
 
-## File Upload Management
+```text
+User
+ |
+ +---- Enrollments
+ |
+ +---- Evaluations
+ |
+ +---- Comments
+ |
+ +---- Payments
 
-Files must be validated, uploaded, stored, and associated with the correct resources.
 
-## Real-Time Communication
-
-Users need immediate updates when important educational events occur.
-
-## Duplicate Request Prevention
-
-Idempotency helps prevent duplicated operations caused by repeated requests.
-
-## Large Data Export
-
-CSV and Excel generation must remain efficient when working with larger datasets.
-
-## Scheduling
-
-Appointments must be validated to reduce scheduling conflicts.
-
-## Reporting
-
-Different roles require filtered and structured access to platform data.
-
-## Separation of Concerns
-
-Authentication, courses, scheduling, reports, notifications, and files are separated into dedicated modules.
+Category
+ |
+ +---- Courses
+         |
+         +---- Lessons
+         |
+         +---- Enrollments
+         |
+         +---- Evaluations
+         |
+         +---- Comments
+```
 
 ---
 
 # Project Structure
 
-A possible NestJS project structure:
+The actual project structure follows:
 
-```text id="wr1fkj"
+```text
 src/
 |
-|-- auth/
-|   |-- guards/
-|   |-- strategies/
-|   |-- decorators/
-|   |-- dto/
-|   |-- auth.controller.ts
-|   |-- auth.service.ts
-|   `-- auth.module.ts
+|-- config/
+|   `-- connectDB.ts
 |
-|-- users/
+|-- controllers/
+|   |-- AuthController.ts
+|   |-- CategoryController.ts
+|   |-- CommentController.ts
+|   |-- CourseController.ts
+|   |-- EnrollmentController.ts
+|   |-- EvaluationController.ts
+|   |-- LessonController.ts
+|   |-- PaymentController.ts
+|   |-- UserController.ts
+|   |-- adminDashboardController.ts
+|   |-- aiController.ts
+|   `-- createPaymentSessionController.ts
 |
-|-- courses/
-|   |-- dto/
-|   |-- courses.controller.ts
-|   |-- courses.service.ts
-|   `-- courses.module.ts
+|-- middlewares/
+|   |-- Error.ts
+|   |-- ValidateID.ts
+|   |-- authMiddleware.ts
+|   |-- multer.ts
+|   `-- validate.ts
 |
-|-- enrollments/
+|-- models/
+|   |-- Category.ts
+|   |-- Comment.ts
+|   |-- Course.ts
+|   |-- Enrollment.ts
+|   |-- Evaluation.ts
+|   |-- Lesson.ts
+|   |-- PasswordResetToken.ts
+|   |-- Payment.model.ts
+|   |-- User.ts
+|   |-- VerificationCode.ts
+|   `-- associations.ts
 |
-|-- appointments/
+|-- routes/
+|   |-- AdminRoutes.ts
+|   |-- Auth.routes.ts
+|   |-- Enrollment.routes.ts
+|   |-- EvaluationRoutes.ts
+|   |-- Lesson.routes.ts
+|   |-- PaymentRoutes.ts
+|   |-- ai.ts
+|   |-- category.routes.ts
+|   |-- commentRoutes.ts
+|   |-- course.route.ts
+|   `-- user.routes.ts
 |
-|-- results/
+|-- services/
+|   |-- aiHelper.ts
+|   |-- gemini.ts
+|   `-- paymobService.ts
 |
-|-- reports/
+|-- utils/
+|   |-- cache/
+|   |-- Cloudinary.ts
+|   |-- emailServices.ts
+|   `-- logger.ts
 |
-|-- notifications/
+|-- validation/
 |
-|-- files/
-|
-|-- mail/
-|
-|-- gateways/
-|
-|-- prisma/
-|
-|-- common/
-|   |-- guards/
-|   |-- decorators/
-|   |-- filters/
-|   |-- interceptors/
-|   `-- pipes/
-|
-|-- app.module.ts
-`-- main.ts
+|-- appStatus.json
+|-- client.ts
+`-- index.ts
 ```
 
-This modular structure keeps different business domains independent and easier to maintain.
+The architecture follows a clear separation between:
+
+```text
+Routes
+   |
+   v
+Middleware
+   |
+   v
+Controllers
+   |
+   v
+Services
+   |
+   v
+Models / External Services
+```
 
 ---
 
 # Environment Configuration
 
-Create a `.env` file in the project root.
+The exact environment variables depend on the implementation, but the project may require configuration for:
 
-Example:
-
-```env id="5x6n1v"
+```env
 PORT=3000
 
-DATABASE_URL=postgresql://username:password@localhost:5432/elearning
+DATABASE_URL=your_database_connection_string
 
 JWT_SECRET=your_jwt_secret
 
 CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
-MAIL_HOST=smtp.example.com
-MAIL_PORT=587
-MAIL_USER=your_email
-MAIL_PASSWORD=your_password
+PAYMOB_API_KEY=your_paymob_api_key
+
+GEMINI_API_KEY=your_gemini_api_key
+
+EMAIL_USER=your_email
+EMAIL_PASSWORD=your_email_password
 ```
 
-Production secrets should never be committed to source control.
-
-Add `.env` to `.gitignore`.
+Never commit production credentials or API keys to Git.
 
 ---
 
 # Installation and Setup
 
-## Requirements
-
-Make sure the following tools are installed:
-
-- Node.js
-- PostgreSQL
-- npm or Yarn
-
----
-
 ## Clone the Repository
 
-```bash id="m5h4ph"
-git clone https://github.com/yourusername/e-learning-platform.git
-cd e-learning-platform
+```bash
+git clone <repository-url>
+cd <project-directory>
 ```
-
----
 
 ## Install Dependencies
 
-Using npm:
-
-```bash id="1yg33e"
+```bash
 npm install
 ```
 
-Or Yarn:
-
-```bash id="2n2eun"
-yarn install
-```
-
----
-
 ## Configure Environment Variables
 
-Create the environment file:
-
-```bash id="99m2yc"
-cp .env.example .env
-```
-
-Update the required environment variables.
-
----
-
-## Generate Prisma Client
-
-```bash id="etwyqs"
-npx prisma generate
-```
-
----
-
-## Run Database Migrations
-
-```bash id="5v9fvz"
-npx prisma migrate dev
-```
-
----
+Create the required `.env` file and configure the database and external services.
 
 ## Start Development Server
 
-```bash id="7twzz1"
-npm run start:dev
+```bash
+npm run dev
 ```
 
-The backend will run on the configured port.
-
-For example:
-
-```text id="vt3ncc"
-http://localhost:3000
-```
+The exact scripts should follow the scripts configured inside `package.json`.
 
 ---
 
-# Scalability
+# Engineering Highlights
 
-The architecture can evolve as the number of students, instructors, courses, and reports increases.
+The project demonstrates several important backend engineering concepts.
 
-A larger deployment could follow:
+## Modular Express Architecture
 
-```text id="n1njt5"
-                       Load Balancer
-                            |
-              -----------------------------
-              |                           |
-              v                           v
-       NestJS Instance             NestJS Instance
-              |                           |
-              -------------+---------------
-                           |
-                 ---------------------
-                 |                   |
-                 v                   v
-             PostgreSQL            Redis
-                 |
-                 v
-             Read Replica
-```
+The application separates routes, controllers, middleware, models, services, utilities, and validation.
 
-Redis can later be introduced for:
+## Authentication Workflows
 
-- Caching
-- Distributed sessions
-- Socket.IO scaling
-- Temporary verification data
-- Rate limiting
+Authentication includes supporting infrastructure for verification codes and password reset tokens.
 
-Background queues can also move expensive operations outside the HTTP request lifecycle.
+## Payment Integration
+
+Paymob is isolated behind a dedicated service layer.
+
+## AI Integration
+
+Google Gemini integration is separated into AI routes, controllers, helpers, and provider logic.
+
+## File Management
+
+Multer handles incoming files while Cloudinary provides external cloud storage.
+
+## Validation
+
+Dedicated validation middleware keeps request validation separate from business logic.
+
+## Centralized Error Handling
+
+Application errors are handled through shared middleware rather than duplicated error logic.
+
+## Database Relationships
+
+The application contains explicit model associations between the main educational entities.
+
+## External Service Integration
+
+The backend integrates multiple external systems while keeping their logic separated from core controllers.
 
 ---
 
@@ -1044,24 +973,21 @@ Background queues can also move expensive operations outside the HTTP request li
 Possible future improvements include:
 
 - Redis caching
-- BullMQ background jobs
+- Background job processing
 - Docker containerization
-- Nginx reverse proxy
 - CI/CD pipelines
-- Course video streaming
-- Online exams
-- Automatic grading
+- Automated testing
+- Course recommendations
+- Advanced AI learning assistant
+- Online quizzes
 - Certificates
-- Payment integration
-- Course subscriptions
+- Progress tracking
+- Course completion tracking
 - Advanced analytics
-- Search engine integration
-- Scheduled email reminders
-- Push notifications
-- Structured logging
-- Error tracking
-- API monitoring
-- Database replication
+- Structured monitoring
+- Rate limiting
+- API documentation
+- Search optimization
 - Horizontal scaling
 
 ---
@@ -1072,73 +998,38 @@ Possible future improvements include:
 
 A student can:
 
-- Register
-- Verify email
+- Register an account
+- Verify their account
 - Login
 - Browse courses
+- View lessons
 - Enroll in courses
-- View appointments
-- View test and lab results
-- Upload required documents
-- Receive notifications
-
-## Instructor
-
-An instructor can:
-
-- Manage courses
-- View enrolled students
-- Schedule appointments
-- Manage test results
-- Manage lab results
-- Upload documents
-- Generate reports
-- Export data
-- Receive real-time notifications
+- Complete payments
+- Submit evaluations
+- Write comments
+- Interact with AI-powered features
 
 ## Administrator
 
 An administrator can:
 
 - Manage users
-- Manage instructors
-- Manage students
 - Manage courses
+- Manage categories
 - Monitor enrollments
-- Access reports
-- Export platform data
-- Monitor platform activity
-
----
-
-# Security Considerations
-
-Important security measures include:
-
-- JWT validation
-- Secure password hashing
-- Role-Based Access Control
-- Email verification
-- DTO validation
-- File validation
-- Protected file upload endpoints
-- Rate limiting
-- Secure environment variable management
-- Authorization at the resource level
-
-The backend should always verify both the user's role and their relationship with the requested resource.
-
-For example, being an instructor should not automatically allow an instructor to modify another instructor's course.
+- Monitor payments
+- Access dashboard functionality
+- Manage platform content
 
 ---
 
 # Final Note
 
-The E-Learning Platform demonstrates the architecture of a complete multi-role educational backend rather than a simple course management CRUD application.
+The E-Learning Platform demonstrates a complete backend architecture for an online education system using Node.js, Express.js, TypeScript, and a model-based database architecture.
 
-The project focuses on important backend engineering concepts including authentication, fine-grained authorization, email verification, scheduling, file management, real-time communication, idempotency, automated reporting, and efficient CSV and Excel exports.
+The project goes beyond basic CRUD functionality by integrating authentication, account verification, password recovery, course enrollment, payments, AI capabilities, file uploads, cloud storage, email services, evaluations, comments, validation, logging, and administrative functionality.
 
-The modular NestJS architecture allows the platform to evolve into a larger production system with caching, background processing, payments, video streaming, advanced analytics, monitoring, and horizontal scaling.
+The separation between controllers, routes, models, middleware, services, and utilities provides a maintainable foundation that can be extended as the platform grows.
 
 ---
 
@@ -1149,15 +1040,13 @@ The modular NestJS architecture allows the platform to evolve into a larger prod
 Backend Developer specializing in:
 
 - Node.js
-- NestJS
+- Express.js
 - TypeScript
-- PostgreSQL
-- Prisma
-- JWT Authentication
-- Role-Based Access Control
-- Socket.IO
-- File Upload Systems
-- Real-Time Applications
-- Reporting Systems
 - RESTful APIs
-- Scalable Backend Systems
+- Database Design
+- Authentication and Authorization
+- Payment Integration
+- AI Integration
+- Cloudinary
+- File Upload Systems
+- Backend Architecture
